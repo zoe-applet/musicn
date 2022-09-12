@@ -1,14 +1,18 @@
 {
   "name": "musicn",
-  "version": "1.2.3",
+  "version": "1.4.6",
   "description": "Download music in your command line",
   "bin": {
-    "musicn": "./bin/musicn",
-    "msc": "./bin/musicn"
+    "musicn": "bin/cli.js",
+    "msc": "bin/cli.js"
   },
   "scripts": {
+    "build": "tsup",
+    "lint": "eslint --ext .ts src/",
+    "prepare": "husky install",
     "release": "bumpp --commit --push --tag"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zonemeen/musicn.git"
@@ -20,17 +24,22 @@
     "ZQ",
     "free",
     "download",
+    "music download",
     "migu",
+    "netease-cloud-music",
     "terminal",
     "command line",
-    "cli"
+    "command-line-tool",
+    "cli",
+    "cli-tool"
   ],
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
   "files": [
+    "dist",
     "bin",
-    "lib"
+    "README.md"
   ],
   "author": "zonemeen",
   "license": "MIT",
@@ -39,15 +48,37 @@
   },
   "homepage": "https://github.com/zonemeen/musicn#readme",
   "dependencies": {
-    "cli-progress": "^3.9.1",
-    "colorette": "^2.0.16",
-    "commander": "^8.1.0",
-    "got": "^11.8.2",
-    "prompts": "^2.4.2",
-    "update-notifier": "^5.1.0"
+    "@inquirer/checkbox": "0.0.24-alpha.0",
+    "cli-progress": "3.11.2",
+    "colorette": "2.0.19",
+    "commander": "9.4.0",
+    "got": "12.3.1",
+    "ora": "6.1.2",
+    "pretty-bytes": "6.0.0",
+    "update-notifier": "6.0.2"
   },
   "devDependencies": {
-    "bumpp": "^7.1.1",
-    "prettier": "^2.4.1"
+    "@types/cli-progress": "3.11.0",
+    "@types/inquirer": "9.0.1",
+    "@types/node": "18.7.6",
+    "@types/update-notifier": "6.0.1",
+    "@typescript-eslint/eslint-plugin": "5.33.1",
+    "@typescript-eslint/parser": "5.33.1",
+    "bumpp": "8.2.1",
+    "eslint": "8.22.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3",
+    "prettier": "2.7.1",
+    "tsup": "6.2.2",
+    "typescript": "4.7.4"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }
